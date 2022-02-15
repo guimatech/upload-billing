@@ -1,0 +1,26 @@
+<title>Upload de Cobranças</title>
+<table>
+    <caption>Cobranças</caption>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cliente</th>
+            <th>Parcela</th>
+            <th>Operação</th>
+            <th>Vencimento</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let billing of billings">
+            <td>{{billing.id}}</td>
+            <td>{{billing.customer}}</td>
+            <!-- <td>{{billing.installment}}</td>
+        <td>{{billing.operation}}</td>
+        <td>{{billing.expiration}}</td>
+        <td>{{billing.email}}</td>
+        <td>{{billing.phone}}</td> -->
+        </tr>
+    </tbody>
+</table>
