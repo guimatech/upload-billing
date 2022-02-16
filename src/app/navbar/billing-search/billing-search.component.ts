@@ -3,6 +3,7 @@ import { Router } from '@angular/router'
 
 import { Subject } from "rxjs"
 import { switchMap, debounceTime, distinctUntilKeyChanged } from 'rxjs/operators'
+import { Billing } from 'src/app/billings/shared/billing.model'
 
 @Component({
   selector: 'billing-search',
@@ -11,8 +12,7 @@ import { switchMap, debounceTime, distinctUntilKeyChanged } from 'rxjs/operators
 
 export class BillingSearchComponent implements OnInit{
   public searchTerms: Subject<string> = new Subject()
-  public billings: Array<{id: number,
-    customer: string }> | null = null;
+  public billings: Billing[] | null = null;
 
   public constructor(private router: Router){  }
 
@@ -21,29 +21,9 @@ export class BillingSearchComponent implements OnInit{
       debounceTime(300),
       distinctUntilKeyChanged(0),
       switchMap(
-      term => term ? [{
-        "id": 442,
-        "customer": "Myrtle"
-    }, {
-        "id": 376,
-        "customer": "Georgette"
-    }, {
-        "id": 882,
-        "customer": "Manning"
-    }, {
-        "id": 414,
-        "customer": "Essie"
-    }, {
-        "id": 466,
-        "customer": "Augusta"
-    }, {
-        "id": 315,
-        "customer": "Mueller"
-    }, {
-        "id": 344,
-        "customer": "Walter"
-    }] : []))
-      // .subscribe(billings => this.billings = billings)
+      term => term ? [ new Billing(453, "Lucas", 3, "40/01613-7",
+      new Date(), "guimaraes-lucas@outlook.com.br", "+557799356548") ] : []))
+      //  .subscribe(billings => this.billings = billings)
   }
 
   public search(term: string){
